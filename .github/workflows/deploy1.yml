@@ -1,0 +1,20 @@
+name: Deploy Subfolder to GitHub Pages
+
+on:
+  push:
+    branches: [ master ] 
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required for the action to commit and push to the gh-pages branch
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: Portfolio
+          branch: gh-pages
